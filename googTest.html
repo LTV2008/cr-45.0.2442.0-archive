@@ -6,8 +6,16 @@
 <script>
  var uaThis;
      var uaThis = navigator.userAgent; // equals userscript
-     var sub1 = uaThis.substring(76,94); // equals "Chrome/45.0.2442.0"
+	// code for x64 only
+	if(navigator.userAgent == "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2442.0 Safari/537.36"){
+    	// code if Windows 8.1 or later (If an application is not manifested for Windows 8.1 or later, the API will always return version 6.2)
+	var sub1 = uaThis.substring(75,93); // equals "Chrome/45.0.2442.0"
+	} else {
+    	// code if Windows 7 or older (NT 6.1)
+   	var sub1 = uaThis.substring(75,93); // equals "Chrome/45.0.2442.0"
+	}
      var uaGrizz; // equals nothing right now.
+	console.log(navigator.userAgent);
     console.log(sub1);
     if (sub1 == "Chrome/45.0.2442.0"){
 	// if the version is Chrome/45.0.2442.0, DO IT!!!
@@ -35,6 +43,6 @@ function detect() {
 </script>
     <input type="button" value="Detect Now" onclick="detect()" />
     <h2>Press "Detect Now" to start detection.</h2>
-    <p>Version 1.0</p>
+    <p>Version 1.0 (for x64 only)</p>
   </body>
 </html>
